@@ -16,8 +16,7 @@ def test_youtube(playwright: Playwright) -> None:
     page.wait_for_timeout(5000)
 
     page_links = page.locator("#video-title")
-    if not page_links.count() >= 10:
-        print("there is less then 10 videos about cats")
+    assert page_links.count() >= 10, "there is less then 10 videos about cats"
 
     links = []
     for link in page_links.all():
